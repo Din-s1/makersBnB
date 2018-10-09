@@ -1,3 +1,3 @@
-require_relative "./lib/makers_bnb_app"
+require_relative "./app/app.rb"
 
-run Makers_bnb_Manager
+run MakersBnbManager
