@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.5.1'
 
+gem 'devise'
 gem 'pg'
 gem 'rake'
 gem 'rerun'
