@@ -29,8 +29,3 @@ class User
     email =~ /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
   end
 end
-
-# TODO Create user class
-# TODO Create create method
-# TODO Create view method
-# TODO Create REGEX for emails
