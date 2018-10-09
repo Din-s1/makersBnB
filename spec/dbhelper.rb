@@ -7,6 +7,6 @@ module DBhelper
 
   def self.connect_to_db
     database = ENV['ENVIRONMENT'] == 'test' ? 'makersbnb_test' : 'makersbnb'
-    connection = PG.connect(dbname: database)
+    PG.connect(dbname: database)
   end
-end 
+end

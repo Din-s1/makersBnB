@@ -4,9 +4,9 @@ class User
   CONN = DBhelper.connect_to_db
 
   def self.create(username, email, password)
-    raise 'Email already registered!' if !CONN.exec("SELECT email FROM users WHERE email = '#{email}'").first.nil?
-    raise 'Please enter a valid email!' if  !valid_email?(email)
-    raise 'Username already registered!' if !CONN.exec("SELECT username FROM users WHERE username = '#{username}'").first.nil?
+    raise 'Please enter a valid email!' unless valid_email?(email)
+    raise 'Email already registered!' unless CONN.exec("SELECT email FROM users WHERE email = '#{email}'").first.nil?
+    raise 'Username already registered!' unless CONN.exec("SELECT username FROM users WHERE username = '#{username}'").first.nil?
 
     CONN.exec("INSERT INTO users (username, email, password) VALUES ('#{username}', '#{email}', '#{password}')")
   end
@@ -22,7 +22,8 @@ class User
       }
     }
   end
-  private
+
+  private_class_method
 
   def self.valid_email?(email)
     email =~ /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
