@@ -1,6 +1,6 @@
 # makersBnB
 
-# Week Overview
+# Week Overview:
 
   -  You'll work in teams to build a clone of Airbnb.
 
@@ -13,26 +13,26 @@
   -  Careers sessions begin this week.
 
 ---
-# Contributors
-  [DamoH](https://github.com/DamoH)
-  [Din-s1](https://github.com/Din-s1)
-  [IvyMic](https://github.com/IvyMic)
-  [NathanQuayle](https://github.com/NathanQuayle)
+# Contributors:
+  [DamoH](https://github.com/DamoH) <br/>
+  [Din-s1](https://github.com/Din-s1) <br/>
+  [IvyMic](https://github.com/IvyMic) <br/>
+  [NathanQuayle](https://github.com/NathanQuayle) <br/>
 ---
-## Requirements/Spec
+## Requirements/Spec:
 
 
 ---
-## User Stories
+## User Stories:
 
 ---
-## Resources Used
+## Resources Used:
   [REGEX Tester](https://regexr.com/)
 
-  #### Ruby Version
+  #### Ruby Version:
     - 2.5.1
 
-  #### Gemfiles
+  #### Gemfiles:
     - gem 'capybara'
     - gem 'devise'
     - gem 'pg'
