@@ -13,7 +13,8 @@
   -  Careers sessions begin this week.
 
   ---
-
+ # Contributors
+  
 
 ## Requirements/Spec
 
@@ -22,4 +23,18 @@
 ## User Stories
 
 
-## 
+## Resources Used
+  #### Ruby Version
+    - 2.5.1
+
+  #### Gemfiles
+    - gem 'capybara'
+    - gem 'devise'
+    - gem 'pg'
+    - gem 'rake'
+    - gem 'rerun'
+    - gem 'sinatra'
+    - gem 'rspec'
+    - gem 'rubocop', '0.59.2'
+    - gem 'simplecov'
+    - gem 'simplecov-console'
