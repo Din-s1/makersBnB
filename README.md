@@ -12,18 +12,20 @@
 
   -  Careers sessions begin this week.
 
-  ---
- # Contributors
+---
+# Contributors
   
-
+---
 ## Requirements/Spec
 
 
-
+---
 ## User Stories
 
-
+---
 ## Resources Used
+  [REGEX Tester](https://regexr.com/)
+
   #### Ruby Version
     - 2.5.1
 
