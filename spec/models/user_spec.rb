@@ -1,4 +1,4 @@
-require './app/models/users.rb'
+require './app/models/user.rb'
 
 describe User do
   let(:connect) { DBhelper.connect_to_db }
@@ -6,9 +6,11 @@ describe User do
   describe '.create' do
     it 'create a user' do
       User.create('Ghibli','studio@ghibli.com','Totoro')
-      expect(connect.exec('SELECT username FROM users')).to eq('Ghibli')
-      expect(connect.exec('SELECT email FROM users')).to eq('studio@ghibli.com')
-      expect(connect.exec('SELECT password FROM users')).to eq('Totoro')
+      expect(connect.exec('SELECT username, email, password FROM users')).to include({
+        'username' => 'Ghibli',
+        'email' => 'studio@ghibli.com', 
+        'password' => 'Totoro'
+      })
     end
   end
 end
