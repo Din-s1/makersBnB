@@ -2,7 +2,6 @@
 class Space
   CON = DBhelper.connect_to_db
   def self.all
-
     spaces = CON.exec("SELECT * FROM spaces;")
     spaces.map do |row|
       {
@@ -14,7 +13,6 @@ class Space
         guest_id: row['guest_id']
       }
     end
-
   end
 
   def self.create(description, location, price, host_id, date, guest_id)

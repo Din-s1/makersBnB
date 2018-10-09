@@ -1,7 +1,7 @@
 require './app/models/space.rb'
 
 describe Space do
-  let(:con){DBhelper.connect_to_db}
+  let(:con) { DBhelper.connect_to_db }
   describe '.create' do
     it "creates a space row in the spaces db" do
       Space.create('flat','Springfield', 51, 1, '06/06/06', 4)
@@ -20,7 +20,7 @@ describe Space do
     it "retrieves all spaces in the spaces db" do
       con.exec("INSERT INTO spaces(description, location, price, host_id, date, guest_id) VALUES ('flat', 'Springfield', 51, 1, '06/06/06', 4);")
       spaces = Space.all
-      expect(spaces).to include ({
+      expect(spaces).to include({
               description: 'flat',
               location: 'Springfield',
               price: '$51.00',
@@ -51,7 +51,7 @@ describe Space do
       con.exec("INSERT INTO spaces(id, description, location, price, host_id, date, guest_id) VALUES (333, 'flat', 'Springfield', 51, 1, '06/06/06', 4);")
       con.exec("INSERT INTO spaces(id, description, location, price, host_id, date, guest_id) VALUES (555, 'house', 'Drury Lane', 44, 3, '11/14/12', 6);")
       Space.delete_space(333)
-      expect(Space.all).not_to include ({
+      expect(Space.all).not_to include({
               description: 'flat',
               location: 'Springfield',
               price: '$51.00',
