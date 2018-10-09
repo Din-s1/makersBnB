@@ -13,4 +13,16 @@ describe User do
       })
     end
   end
+
+  describe '.view' do
+    it 'shows all users' do
+      connect.exec("INSERT INTO users (username, email, password) VALUES ('Ghibli','studio@ghibli.com','Totoro')")
+      expect(User.view('Ghibli')[0]).to include({
+        'username' => 'Ghibli',
+        'email' => 'studio@ghibli.com', 
+        'password' => 'Totoro'
+      })
+    end
+  end
+
 end

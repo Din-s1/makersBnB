@@ -1,9 +1,14 @@
 require './spec/dbhelper.rb'
 
 class User
-  CONNECT = DBhelper.connect_to_db
+  CONN = DBhelper.connect_to_db
+
   def self.create(username, email, password)
-    CONNECT.exec("INSERT INTO users (username, email, password) VALUES ('#{username}', '#{email}', '#{password}')" )
+    CONN.exec("INSERT INTO users (username, email, password) VALUES ('#{username}', '#{email}', '#{password}')" )
+  end
+
+  def self.view(username)
+    CONN.exec("SELECT * FROM users WHERE username = '#{username}'")
   end
 end
 
