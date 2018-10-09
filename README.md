@@ -14,7 +14,9 @@
 
 ---
 # Contributors
-  
+  [DamoH](https://github.com/DamoH)
+  [Din-s1](https://github.com/Din-s1)
+  [NathanQuayle](https://github.com/NathanQuayle)
 ---
 ## Requirements/Spec
 
