@@ -19,7 +19,6 @@ describe BookingRequest do
     it 'lists all the booking_request rows in the booking table' do
       connect.exec("INSERT INTO spaces(id, description, location, price, host_id, date, guest_id) VALUES (333, 'flat', 'Springfield', 51, 1, '06/06/06', 7);")
       BookingRequest.create(333, 1, 7, '06/06/07')
-      booking_request_id = connect.exec("")
       expect(BookingRequest.all).to eql([{
         space_id: '333',
         host_id: '1',
@@ -31,13 +30,29 @@ describe BookingRequest do
 
   describe '.view_booking_request' do
     it 'lists an individual booking request' do
-      
+      connect.exec("INSERT INTO spaces(id, description, location, price, host_id, date, guest_id) VALUES (333, 'flat', 'Springfield', 51, 1, '06/06/06', 7);")
+      BookingRequest.create(333, 1, 7, '06/06/07')
+      connect.exec("INSERT INTO spaces(id, description, location, price, host_id, date, guest_id) VALUES (455, 'flat', 'Springfield', 51, 1, '06/06/06', 7);")
+      BookingRequest.create(455, 1, 7, '06/06/07')
+      expect(BookingRequest.view_booking_request(1)).to eql([{
+        space_id: '333',
+        host_id: '1',
+        guest_id: '7',
+        date: '2007-06-06'
+      }, 
+      {
+        space_id: '455',
+        host_id: '1',
+        guest_id: '7',
+        date: '2007-06-06'
+      }
+    ])
     end
   end
 
-  describe '.update' do
-    it 'updates the booking request table' do
+  # describe '.update' do
+  #   it 'updates the booking request table' do
       
-    end
-  end
+  #   end
+  # end
 end

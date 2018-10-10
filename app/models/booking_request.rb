@@ -15,4 +15,16 @@ class BookingRequest
       }
     end
   end
+
+  def self.view_booking_request(host_id)
+    CON.exec("SELECT * FROM booking_requests").map do |row|
+      {
+        space_id: row['space_id'],
+        host_id: row['host_id'],
+        guest_id: row['guest_id'],
+        date: row['date']
+      }
+    end
+  end
+
 end
