@@ -1,0 +1,23 @@
+<div>
+
+  <ul>
+    <% @space.each do |space| %>
+      <li><%= space[:description] %></li>
+      <li><%= space[:location] %></li>
+      <li><%= space[:price] %></li>
+      <li><%= space[:date] %></li>
+    <% end %>
+  </ul>
+
+  <form action="/requests" method="post">
+    <div>
+      <label for="stay">Choose your stay date :</label>
+      <input type="date" id="stay" name="stay" min="2017-04-01" max="2017-04-20" required>
+      <span class="validity"></span>
+    </div>
+    <div>
+      <input type="submit" value="Confirm">
+    </div>
+  </form>
+
+</div>

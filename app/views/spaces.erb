@@ -2,7 +2,13 @@
 
   <ul>
     <% @spaces.each do |spaces| %>
-      <li><%= spaces %></li>
+      <li><%= spaces[:description] %></li>
+      <li><%= spaces[:location] %></li>
+      <li><%= spaces[:price] %></li>
+      <li><%= spaces[:date] %></li>
+      <form action="/spaces/<%= spaces[:space_id] %>">
+        <input type="submit" value="Choose Dates">
+    </form>
     <% end %>
   </ul>
 
