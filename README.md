@@ -1,6 +1,6 @@
 # makersBnB
 
-# Week Overview:
+# Week Overview
 
   -  You'll work in teams to build a clone of Airbnb.
 
