@@ -52,14 +52,14 @@ describe Space do
     it 'it finds a room based on space id' do
       con.exec("INSERT INTO spaces(description, location, price, host_id, date, guest_id) VALUES ('flat', 'Springfield', 51, 1, '06/06/06', 4);")
       space_id = con.exec("SELECT id FROM spaces;").first['id']
-      expect(Space.select_space(space_id)).to eql([{
+      expect(Space.select_space(space_id)).to include({
               description: 'flat',
               location: 'Springfield',
               price: '$51.00',
               host_id: '1',
               date: '2006-06-06',
               guest_id: '4'
-            }])
+            })
     end
   end
 

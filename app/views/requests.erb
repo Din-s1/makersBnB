@@ -4,7 +4,11 @@
 
   <div>
 
-    
+    <ul>
+      <% @booking_requests.each do |req| %>
+        <li><%= req[:date] %></li>
+      <% end %>
+    </ul>
 
   </div>
 

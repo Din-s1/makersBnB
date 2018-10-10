@@ -1,12 +1,10 @@
 <div>
 
   <ul>
-    <% @space.each do |space| %>
-      <li><%= space[:description] %></li>
-      <li><%= space[:location] %></li>
-      <li><%= space[:price] %></li>
-      <li><%= space[:date] %></li>
-    <% end %>
+    <li><%= @space[:description] %></li>
+    <li><%= @space[:location] %></li>
+    <li><%= @space[:price] %></li>
+    <li><%= @space[:date] %></li>
   </ul>
 
   <form action="/requests" method="post">

@@ -36,8 +36,9 @@ class Space
 
   def self.select_space(space_id)
     find = CON.exec("SELECT * FROM spaces WHERE id = #{space_id};")
-    find.map do |row|
+    arr = find.map do |row|
       {
+        space_id: row['id'],
         description: row['description'],
         location: row['location'],
         price: row['price'],
@@ -46,6 +47,7 @@ class Space
         guest_id: row['guest_id']
       }
     end
+    arr.first
   end
 
   def self.delete_space(space_id)

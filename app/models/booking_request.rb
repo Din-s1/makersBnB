@@ -1,7 +1,7 @@
 class BookingRequest
   CON = DBhelper.connect_to_db
   def self.create(space_id, host_id, guest_id, date)
-    CON.exec("INSERT INTO booking_requests (space_id, host_id, guest_id, date) VALUES (#{space_id}, '#{host_id}', '#{guest_id}', '#{date}')")
+    CON.exec("INSERT INTO booking_requests (space_id, host_id, guest_id, date) VALUES ('#{space_id}', '#{host_id}', '#{guest_id}', '#{date}')")
   end
 
   def self.all
@@ -26,6 +26,6 @@ class BookingRequest
       }
     end
   end
-  
+
 
 end
