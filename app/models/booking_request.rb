@@ -26,5 +26,6 @@ class BookingRequest
       }
     end
   end
+  
 
 end
