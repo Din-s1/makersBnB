@@ -13,7 +13,7 @@ class User
 
   def self.view(username)
     res = CONN.exec("SELECT * FROM users WHERE username = '#{username}'")
-    res.map { |column|
+    arr = res.map { |column|
       {
       id: column['id'],
       username: column['username'],
@@ -21,6 +21,7 @@ class User
       password: column['password']
       }
     }
+    arr.first
   end
 
   private_class_method

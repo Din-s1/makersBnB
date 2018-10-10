@@ -6,7 +6,7 @@ feature 'sign up' do
     fill_in 'email', with: 'goku@dbz.com'
     fill_in 'password', with: '123'
     click_button 'confirm'
-    expect(page).to have_content("Sign up successful")
+    find_field('username')
   end
   
 

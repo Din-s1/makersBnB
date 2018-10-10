@@ -31,12 +31,11 @@ describe User do
   describe '.view' do
     it 'shows all users' do
       connect.exec("INSERT INTO users (username, email, password) VALUES ('Ghibli', 'studio@ghibli.com', 'Totoro')")
-      expect(User.view('Ghibli')[0]).to include({
+      expect(User.view('Ghibli')).to include({
         username: 'Ghibli',
         email: 'studio@ghibli.com', 
         password: 'Totoro'
       })
     end
   end
-
 end
