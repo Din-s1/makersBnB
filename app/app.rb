@@ -24,7 +24,7 @@ class MakersBnbManager < Sinatra::Base
   end
 
   post '/requests' do
-    
+    redirect '/requests'
   end
 
 
