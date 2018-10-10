@@ -12,4 +12,20 @@ class MakersBnbManager < Sinatra::Base
     @spaces = Space.all
     erb(:spaces)
   end
+
+  get '/spaces/:id' do
+    @space = Space.select_space(params[:id])
+    erb(:booking)
+  end
+
+  get '/requests' do
+
+    erb(:requests)
+  end
+
+  post '/requests' do
+    
+  end
+
+
 end

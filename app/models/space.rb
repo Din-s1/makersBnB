@@ -5,6 +5,7 @@ class Space
     spaces = CON.exec("SELECT * FROM spaces;")
     spaces.map do |row|
       {
+        space_id: row['id'],
         description: row['description'],
         location: row['location'],
         price: row['price'],
@@ -21,6 +22,20 @@ class Space
 
   def self.find_spaces(host_id)
     find = CON.exec("SELECT * FROM spaces WHERE host_id = #{host_id};")
+    find.map do |row|
+      {
+        description: row['description'],
+        location: row['location'],
+        price: row['price'],
+        host_id: row['host_id'],
+        date: row['date'],
+        guest_id: row['guest_id']
+      }
+    end
+  end
+
+  def self.select_space(space_id)
+    find = CON.exec("SELECT * FROM spaces WHERE id = #{space_id};")
     find.map do |row|
       {
         description: row['description'],
