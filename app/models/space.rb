@@ -16,12 +16,12 @@ class Space
     end
   end
 
-  def self.create(description, location, price, host_id, date, guest_id)
-    CON.exec("INSERT INTO spaces(description, location, price, host_id, date, guest_id) VALUES ('#{description}','#{location}', #{price}, #{host_id}, '#{date}', #{guest_id});")
+  def self.create(description, location, price, host_id, date)
+    CON.exec("INSERT INTO spaces(description, location, price, host_id, date) VALUES ('#{description}','#{location}', #{price}, #{host_id}, '#{date}');")
   end
 
   def self.find_spaces(host_id)
-    find = CON.exec("SELECT * FROM spaces WHERE host_id = #{host_id};")
+    find = CON.exec("SELECT * FROM spaces WHERE host_id = '#{host_id}';")
     find.map do |row|
       {
         description: row['description'],

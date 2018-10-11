@@ -9,10 +9,10 @@ require_relative "./models/user.rb"
 class MakersBnbManager < Sinatra::Base
   enable :sessions
 
-  def logged_in? 
+  def logged_in?
     !session[:username].nil?
   end
-  
+
   def username 
     session[:username]
   end

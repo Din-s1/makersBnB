@@ -1,0 +1,21 @@
+<div>
+  <h1>Space Manager</h1>
+
+  <ul>
+    <% @spaces.each do |spaces| %>
+      <li><%= spaces[:description] %></li>
+      <li><%= spaces[:location] %></li>
+      <li><%= spaces[:price] %></li>
+      <li><%= spaces[:date] %></li>
+    <% end %>
+  </ul>
+
+  <form action='/space_manager' method='post'>
+    <input type="text" name='description' placeholder='Description'>
+    <input type="text" name='location' placeholder='Location'>
+    <input type="number" name='price' placeholder='Price'>
+    <input type="date" name='date'>
+    <input type="submit" value="submit">
+  </form>
+
+</div>
