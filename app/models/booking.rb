@@ -18,7 +18,19 @@ class Booking
   end
 
   def self.view(host_id)
-    CON.exec("SELECT * FROM bookings").map do |row|
+    CON.exec("SELECT * FROM bookings WHERE host_id = #{host_id}").map do |row|
+      {
+        space_id: row['space_id'],
+        host_id: row['host_id'],
+        guest_id: row['guest_id'],
+        date: row['date'],
+        total_price: row['total_price']
+      }
+    end
+  end
+
+  def self.view(guest_id)
+    CON.exec("SELECT * FROM bookings WHERE host_id = #{guest_id}").map do |row|
       {
         space_id: row['space_id'],
         host_id: row['host_id'],

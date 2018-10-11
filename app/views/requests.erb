@@ -1,15 +1,12 @@
 <div>
-
   <h1> Your Requests </h1>
-
   <div>
-
     <ul>
       <% @booking_requests.each do |req| %>
-        <li><%= req[:date] %></li>
+        <li><%= req[:booking_date] %></li>
+        <li><%= req[:booking_description] %></li>
+        <li><%= req[:booking_location] %></li>
       <% end %>
     </ul>
-
   </div>
-
 </div>

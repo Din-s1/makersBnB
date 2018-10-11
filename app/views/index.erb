@@ -1,9 +1,9 @@
 <div>
-
-<a href="/sign-up">
- sign up
-</a>
-
-<a href="/sign-in">Sign in</a>
-
+<% if @logged_in %>
+  <p>Welcome, <%= @username %></p>
+<% else %>
+  <a href="/sign-up">sign up</a>
+  <a href="/sign-in">Sign in</a>
+<% end %>
 </div>
+
