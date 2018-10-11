@@ -17,7 +17,7 @@ class BookingRequest
   end
 
   def self.view_booking_request(host_id)
-    CON.exec("SELECT * FROM booking_requests").map do |row|
+    CON.exec("SELECT * FROM booking_requests WHERE host_id = '#{host_id}'").map do |row|
       {
         space_id: row['space_id'],
         host_id: row['host_id'],
@@ -27,5 +27,18 @@ class BookingRequest
     end
   end
 
-
+  def self.guest_pending_requests(guest_id) 
+    CON.exec("SELECT booking_requests.date, spaces.description, spaces.location
+      FROM booking_requests
+      INNER JOIN spaces
+        ON booking_requests.space_id = spaces.id
+        WHERE booking_requests.guest_id = '#{guest_id}'
+      ").map do |row|
+        {
+          booking_date: row['date'],
+          booking_description: row['description'],
+          booking_location: row['location']
+        }
+      end
+  end
 end

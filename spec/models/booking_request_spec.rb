@@ -50,9 +50,15 @@ describe BookingRequest do
     end
   end
 
-  # describe '.update' do
-  #   it 'updates the booking request table' do
-      
-  #   end
-  # end
+  describe '.guest_pending_requests' do
+    it 'should list only the booking requests for one user' do
+      connect.exec("INSERT INTO spaces(id, description, location, price, host_id, date, guest_id) VALUES (333, 'flat', 'Springfield', 51, 1, '06/06/06', 7);")
+      BookingRequest.create(333, 1, 7, '06/06/07')      
+      expect(BookingRequest.guest_pending_requests(7)).to eql([{
+        booking_date: '2007-06-06',
+        booking_description: 'flat',
+        booking_location: 'Springfield'
+      }])
+    end
+  end
 end

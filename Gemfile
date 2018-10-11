@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 ruby '2.5.1'
 
-gem 'devise'
 gem 'pg'
 gem 'rake'
 gem 'rerun'
 gem 'sinatra'
+gem 'bcrypt'
 
 group :test do
   gem 'capybara'
