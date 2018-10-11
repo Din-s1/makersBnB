@@ -51,7 +51,7 @@ describe BookingRequest do
   end
 
   describe '.guest_pending_requests' do
-    it 'should list only the booking requests for one user' do
+    it 'should list only the pending booking requests for one user' do
       connect.exec("INSERT INTO spaces(id, description, location, price, host_id, date, guest_id) VALUES (333, 'flat', 'Springfield', 51, 1, '06/06/06', 7);")
       BookingRequest.create(333, 1, 7, '06/06/07')      
       expect(BookingRequest.guest_pending_requests(7)).to eql([{
@@ -61,4 +61,23 @@ describe BookingRequest do
       }])
     end
   end
+
+  describe '.accept' do
+    it 'should accept a booking request and change its status to true' do
+      TestSetup.db_setup
+      connect.exec("INSERT INTO booking_requests (id, space_id, host_id, guest_id, date) VALUES (1, 1, '1', '1', '1/1/11')")
+      BookingRequest.accept(1)
+      expect(connect.exec('SELECT status FROM booking_requests WHERE id = 1').first['status']).to eq('t')
+    end
+  end
+
+  describe '.decline' do
+    it 'should decline a booking request and change its status to false' do
+      TestSetup.db_setup
+      connect.exec("INSERT INTO booking_requests (id, space_id, host_id, guest_id, date) VALUES (1, 1, '1', '1', '1/1/11')")
+      BookingRequest.decline(1)
+      expect(connect.exec('SELECT status FROM booking_requests WHERE id = 1').first['status']).to eq('f')
+    end
+  end
+
 end
