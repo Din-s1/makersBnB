@@ -1,0 +1,14 @@
+<div>
+  <h1><%= @username %></h1>
+  <h2>Please select one of the following options:</h2>
+</div>
+
+
+  <div>
+    <form action='/space_manager' method="get">
+      <button type="submit" value="Host">Host</button>
+    </form>
+    <form action='/spaces'>
+      <button type="submit" value="Guest">Guest</button>
+    </form>
+  </div>

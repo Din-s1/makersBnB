@@ -4,14 +4,13 @@ describe Space do
   let(:con) { DBhelper.connect_to_db }
   describe '.create' do
     it "creates a space row in the spaces db" do
-      Space.create('flat','Springfield', 51, 1, '06/06/06', 4)
+      Space.create('flat','Springfield', 51, 1, '06/06/06')
       expect(con.exec('SELECT * FROM spaces').first).to include({
               'description' => 'flat',
               'location' => 'Springfield',
               'price' => '$51.00',
               'host_id' => '1',
               'date' => '2006-06-06',
-              'guest_id' => '4'
             })
     end
   end
