@@ -6,6 +6,7 @@ require 'capybara'
 require 'capybara/rspec'
 
 require_relative './dbhelper.rb'
+require_relative './test_setup.rb'
 require_relative '../app/app.rb'
 
 Capybara.app = MakersBnbManager
@@ -32,6 +33,7 @@ RSpec.configure do |config|
   config.before do
     DBhelper.setup_test_db
   end
+  
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods

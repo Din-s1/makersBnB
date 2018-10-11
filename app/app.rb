@@ -12,13 +12,14 @@ class MakersBnbManager < Sinatra::Base
   def logged_in? 
     !session[:username].nil?
   end
-
+  
   def username 
     session[:username]
   end
 
   get '/' do
-    'Hello, World!';
+    @logged_in = logged_in?
+    @username = username
     erb(:index)
   end
 
@@ -68,8 +69,7 @@ class MakersBnbManager < Sinatra::Base
   post '/requests' do
     @space = session[:space]
     host_id = @space[:host_id]
-    guest_id = 17
-    #guest_id = session[:user_id]
+    guest_id = User.view(session[:username])[:id]
     space_id = @space[:space_id]
     date = params[:stay]
     BookingRequest.create(space_id, host_id, guest_id, date)
@@ -77,10 +77,25 @@ class MakersBnbManager < Sinatra::Base
   end
 
   get '/requests' do
-    @booking_requests = BookingRequest.all
+    guest_id = User.view(username)[:id]
+    @booking_requests = BookingRequest.guest_pending_requests(guest_id)
     erb(:requests)
   end
 
+  get '/options' do
+    @username = session[:username]
+    erb(:options)
+  end
 
+  get '/space_manager' do
+    user_id = User.view(session[:username])[:id]
+    @spaces = Space.find_spaces(user_id)
+    erb(:space_manager)
+  end
 
+  post '/space_manager' do
+    user_id = User.view(session[:username])[:id]
+    Space.create(params[:description], params[:location], params[:price], user_id, params[:date])
+    redirect '/space_manager'
+  end
 end
