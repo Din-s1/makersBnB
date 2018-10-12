@@ -1,22 +1,33 @@
+<link rel="stylesheet" href="/style.css">
+
 <div>
   <h1>Space Manager</h1>
 
-  <ul>
-    <% @requests.each do |req| %>
-      <li><%= req[:spaces_description] %></li>
-      <li><%= req[:spaces_location] %></li>
-      <li><%= req[:spaces_price] %></li>
-      <li><%= req[:spaces_date] %></li>
-      <form action="/accept_booking" method="post">
+  <% @spaces.each do |space| %>
+  <div class='space-manager'>
+    <div class='space-information'>
+      <ul>
+        <li><%= space[:description] %></li>
+        <li><%= space[:location] %></li>
+        <li><%= space[:price] %></li>
+      </ul>
+    </div>
+
+    <% space[:booking_requests].each do |req| %>
+    <div class='booking-request'>
+      <li class='booking-date'><%= req[:booking_date] %></li>
+      <form action="/accept_booking" method="post" class='inline'>
         <input type="hidden" name='booking_request_id' value="<%=req[:booking_id]%>">
         <input type="submit" value="accept">
       </form>
-      <form action="/decline_booking" method="post">
-      <input type="hidden" name='booking_request_id' value="<%=req[:booking_id]%>">
+        <form action="/decline_booking" method="post" class='inline'>
+        <input type="hidden" name='booking_request_id' value="<%=req[:booking_id]%>">
         <input type="submit" value="decline">
       </form>
+    </div>
     <% end %>
-  </ul>
+  </div>
+  <% end %>
 
   <form action='/space_manager' method='post'>
     <input type="text" name='description' placeholder='Description'>

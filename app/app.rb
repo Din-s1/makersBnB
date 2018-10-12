@@ -63,15 +63,16 @@ class MakersBnbManager < Sinatra::Base
   get '/spaces/:id' do
     @space = Space.select_space(params[:id])
     session[:space] = @space
+    
     erb(:booking)
   end
 
   post '/requests' do
-    @space = session[:space]
-    host_id = @space[:host_id]
+    space_id = session[:space][:id]
+    host_id = session[:space][:host_id]
     guest_id = User.view(session[:username])[:id]
-    space_id = @space[:space_id]
     date = params[:stay]
+    
     BookingRequest.create(space_id, host_id, guest_id, date)
     redirect '/requests'
   end
@@ -89,8 +90,7 @@ class MakersBnbManager < Sinatra::Base
 
   get '/space_manager' do
     user_id = User.view(session[:username])[:id]
-    # @spaces = Space.find_spaces(user_id)
-    @requests = BookingRequest.select_pending_bookings(user_id)
+    @spaces = Space.list_with_requests(user_id)
     erb(:space_manager)
   end
 

@@ -1,12 +1,12 @@
 require './app/models/user.rb'
 
 describe User do
-  let(:connect) { DBhelper.connect_to_db }
+  let(:conn) { DBhelper.connect_to_db }
 
   describe '.create' do
     it 'create a user' do
       User.create('Ghibli', 'studio@ghibli.com', 'Totoro')
-      expect(connect.exec('SELECT username, email, password FROM users')).to include({
+      expect(conn.exec('SELECT username, email, password FROM users')).to include({
         'username' => 'Ghibli',
         'email' => 'studio@ghibli.com', 
         'password' => 'Totoro'
@@ -30,7 +30,7 @@ describe User do
 
   describe '.view' do
     it 'shows all users' do
-      connect.exec("INSERT INTO users (username, email, password) VALUES ('Ghibli', 'studio@ghibli.com', 'Totoro')")
+      conn.exec("INSERT INTO users (username, email, password) VALUES ('Ghibli', 'studio@ghibli.com', 'Totoro')")
       expect(User.view('Ghibli')).to include({
         username: 'Ghibli',
         email: 'studio@ghibli.com', 

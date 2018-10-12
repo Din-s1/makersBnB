@@ -1,0 +1,26 @@
+* {
+    list-style: none;
+}
+
+.space-manager {
+
+}
+
+.space-manager > .space-information {
+
+}
+
+.space-manager > .booking-request {
+    border: 1px solid #dfe6e9;
+    width: fit-content;
+    padding: 7px;
+}
+
+.space-manager > .booking-date {
+    text-align: center;
+    margin-bottom: 7px;
+}
+
+.inline {
+    display: inline;
+}
