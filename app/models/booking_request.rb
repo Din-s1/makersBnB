@@ -28,6 +28,33 @@ class BookingRequest
     end
   end
 
+  def self.select_pending_bookings(host_id)
+    CON.exec("
+      SELECT
+        spaces.description,
+        spaces.location,
+        spaces.price,
+        spaces.date,
+        booking_requests.status,
+        booking_requests.id
+      FROM 
+        booking_requests
+      INNER JOIN spaces ON booking_requests.space_id = spaces.id
+      WHERE 
+        booking_requests.host_id = '#{host_id}'
+      AND 
+        booking_requests.status IS NULL
+    ").map do |row|
+      {
+        spaces_description: row['description'],
+        spaces_location: row['location'],
+        spaces_price: row['price'],
+        spaces_date: row['date'],
+        booking_id: row['id']
+      }
+    end
+  end
+
   def self.guest_pending_requests(guest_id) 
     CON.exec("
       SELECT 

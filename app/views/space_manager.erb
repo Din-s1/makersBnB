@@ -2,11 +2,19 @@
   <h1>Space Manager</h1>
 
   <ul>
-    <% @spaces.each do |spaces| %>
-      <li><%= spaces[:description] %></li>
-      <li><%= spaces[:location] %></li>
-      <li><%= spaces[:price] %></li>
-      <li><%= spaces[:date] %></li>
+    <% @requests.each do |req| %>
+      <li><%= req[:spaces_description] %></li>
+      <li><%= req[:spaces_location] %></li>
+      <li><%= req[:spaces_price] %></li>
+      <li><%= req[:spaces_date] %></li>
+      <form action="/accept_booking" method="post">
+        <input type="hidden" name='booking_request_id' value="<%=req[:booking_id]%>">
+        <input type="submit" value="accept">
+      </form>
+      <form action="/decline_booking" method="post">
+      <input type="hidden" name='booking_request_id' value="<%=req[:booking_id]%>">
+        <input type="submit" value="decline">
+      </form>
     <% end %>
   </ul>
 
@@ -16,6 +24,10 @@
     <input type="number" name='price' placeholder='Price'>
     <input type="date" name='date'>
     <input type="submit" value="submit">
+  </form>
+
+  <form action='/options'>
+    <input type="submit" value="Return to options">
   </form>
 
 </div>

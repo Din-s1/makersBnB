@@ -48,7 +48,7 @@ class MakersBnbManager < Sinatra::Base
     db_password = BCrypt::Password.new(User.view(params[:username])[:password])
     if db_password == params[:password]
       session[:username] = params[:username]
-      redirect '/spaces'
+      redirect '/options'
     else
       # flash error
       redirect '/'
@@ -89,9 +89,21 @@ class MakersBnbManager < Sinatra::Base
 
   get '/space_manager' do
     user_id = User.view(session[:username])[:id]
-    @spaces = Space.find_spaces(user_id)
+    # @spaces = Space.find_spaces(user_id)
+    @requests = BookingRequest.select_pending_bookings(user_id)
     erb(:space_manager)
   end
+
+  post '/accept_booking' do
+    BookingRequest.accept(params[:booking_request_id])
+    redirect '/space_manager'
+  end
+
+  post '/decline_booking' do
+    BookingRequest.decline(params[:booking_request_id])
+    redirect '/space_manager'
+  end
+
 
   post '/space_manager' do
     user_id = User.view(session[:username])[:id]
