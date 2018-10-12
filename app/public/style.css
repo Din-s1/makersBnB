@@ -2,8 +2,12 @@
     list-style: none;
 }
 
-.space-manager {
+ul {
+    margin: 0;
+}
 
+.space-manager {
+    margin: 10px 0
 }
 
 .space-manager > .space-information {
@@ -16,7 +20,7 @@
     padding: 7px;
 }
 
-.space-manager > .booking-date {
+.booking-request > .booking-date {
     text-align: center;
     margin-bottom: 7px;
 }

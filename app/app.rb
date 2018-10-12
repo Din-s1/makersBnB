@@ -8,7 +8,8 @@ require_relative "./models/user.rb"
 
 class MakersBnbManager < Sinatra::Base
   enable :sessions
-
+  set :session_secret, 'makersbnb_secret'
+  
   def logged_in?
     !session[:username].nil?
   end

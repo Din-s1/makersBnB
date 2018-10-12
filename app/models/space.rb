@@ -79,7 +79,7 @@ class Space
         }
       end
     end
-
+    
     return result
   end
 
