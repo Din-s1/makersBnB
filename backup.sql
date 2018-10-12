@@ -34,7 +34,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: booking_requests; Type: TABLE; Schema: public; Owner: dee
+-- Name: booking_requests; Type: TABLE; Schema: public; Owner: nathanquayle
 --
 
 CREATE TABLE public.booking_requests (
@@ -42,14 +42,15 @@ CREATE TABLE public.booking_requests (
     space_id integer,
     host_id integer,
     guest_id integer,
-    date date NOT NULL
+    date date NOT NULL,
+    status boolean
 );
 
 
-ALTER TABLE public.booking_requests OWNER TO dee;
+ALTER TABLE public.booking_requests OWNER TO nathanquayle;
 
 --
--- Name: booking_requests_id_seq; Type: SEQUENCE; Schema: public; Owner: dee
+-- Name: booking_requests_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanquayle
 --
 
 CREATE SEQUENCE public.booking_requests_id_seq
@@ -61,17 +62,17 @@ CREATE SEQUENCE public.booking_requests_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.booking_requests_id_seq OWNER TO dee;
+ALTER TABLE public.booking_requests_id_seq OWNER TO nathanquayle;
 
 --
--- Name: booking_requests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dee
+-- Name: booking_requests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanquayle
 --
 
 ALTER SEQUENCE public.booking_requests_id_seq OWNED BY public.booking_requests.id;
 
 
 --
--- Name: bookings; Type: TABLE; Schema: public; Owner: dee
+-- Name: bookings; Type: TABLE; Schema: public; Owner: nathanquayle
 --
 
 CREATE TABLE public.bookings (
@@ -84,10 +85,10 @@ CREATE TABLE public.bookings (
 );
 
 
-ALTER TABLE public.bookings OWNER TO dee;
+ALTER TABLE public.bookings OWNER TO nathanquayle;
 
 --
--- Name: bookings_id_seq; Type: SEQUENCE; Schema: public; Owner: dee
+-- Name: bookings_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanquayle
 --
 
 CREATE SEQUENCE public.bookings_id_seq
@@ -99,17 +100,17 @@ CREATE SEQUENCE public.bookings_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.bookings_id_seq OWNER TO dee;
+ALTER TABLE public.bookings_id_seq OWNER TO nathanquayle;
 
 --
--- Name: bookings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dee
+-- Name: bookings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanquayle
 --
 
 ALTER SEQUENCE public.bookings_id_seq OWNED BY public.bookings.id;
 
 
 --
--- Name: spaces; Type: TABLE; Schema: public; Owner: dee
+-- Name: spaces; Type: TABLE; Schema: public; Owner: nathanquayle
 --
 
 CREATE TABLE public.spaces (
@@ -123,10 +124,10 @@ CREATE TABLE public.spaces (
 );
 
 
-ALTER TABLE public.spaces OWNER TO dee;
+ALTER TABLE public.spaces OWNER TO nathanquayle;
 
 --
--- Name: spaces_id_seq; Type: SEQUENCE; Schema: public; Owner: dee
+-- Name: spaces_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanquayle
 --
 
 CREATE SEQUENCE public.spaces_id_seq
@@ -138,17 +139,17 @@ CREATE SEQUENCE public.spaces_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.spaces_id_seq OWNER TO dee;
+ALTER TABLE public.spaces_id_seq OWNER TO nathanquayle;
 
 --
--- Name: spaces_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dee
+-- Name: spaces_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanquayle
 --
 
 ALTER SEQUENCE public.spaces_id_seq OWNED BY public.spaces.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: dee
+-- Name: users; Type: TABLE; Schema: public; Owner: nathanquayle
 --
 
 CREATE TABLE public.users (
@@ -159,10 +160,10 @@ CREATE TABLE public.users (
 );
 
 
-ALTER TABLE public.users OWNER TO dee;
+ALTER TABLE public.users OWNER TO nathanquayle;
 
 --
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: dee
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanquayle
 --
 
 CREATE SEQUENCE public.users_id_seq
@@ -174,45 +175,45 @@ CREATE SEQUENCE public.users_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.users_id_seq OWNER TO dee;
+ALTER TABLE public.users_id_seq OWNER TO nathanquayle;
 
 --
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dee
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanquayle
 --
 
 ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- Name: booking_requests id; Type: DEFAULT; Schema: public; Owner: dee
+-- Name: booking_requests id; Type: DEFAULT; Schema: public; Owner: nathanquayle
 --
 
 ALTER TABLE ONLY public.booking_requests ALTER COLUMN id SET DEFAULT nextval('public.booking_requests_id_seq'::regclass);
 
 
 --
--- Name: bookings id; Type: DEFAULT; Schema: public; Owner: dee
+-- Name: bookings id; Type: DEFAULT; Schema: public; Owner: nathanquayle
 --
 
 ALTER TABLE ONLY public.bookings ALTER COLUMN id SET DEFAULT nextval('public.bookings_id_seq'::regclass);
 
 
 --
--- Name: spaces id; Type: DEFAULT; Schema: public; Owner: dee
+-- Name: spaces id; Type: DEFAULT; Schema: public; Owner: nathanquayle
 --
 
 ALTER TABLE ONLY public.spaces ALTER COLUMN id SET DEFAULT nextval('public.spaces_id_seq'::regclass);
 
 
 --
--- Name: users id; Type: DEFAULT; Schema: public; Owner: dee
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: nathanquayle
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
 
 --
--- Name: booking_requests booking_requests_pkey; Type: CONSTRAINT; Schema: public; Owner: dee
+-- Name: booking_requests booking_requests_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanquayle
 --
 
 ALTER TABLE ONLY public.booking_requests
@@ -220,7 +221,7 @@ ALTER TABLE ONLY public.booking_requests
 
 
 --
--- Name: bookings bookings_pkey; Type: CONSTRAINT; Schema: public; Owner: dee
+-- Name: bookings bookings_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanquayle
 --
 
 ALTER TABLE ONLY public.bookings
@@ -228,7 +229,7 @@ ALTER TABLE ONLY public.bookings
 
 
 --
--- Name: spaces spaces_pkey; Type: CONSTRAINT; Schema: public; Owner: dee
+-- Name: spaces spaces_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanquayle
 --
 
 ALTER TABLE ONLY public.spaces
@@ -236,7 +237,7 @@ ALTER TABLE ONLY public.spaces
 
 
 --
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: dee
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanquayle
 --
 
 ALTER TABLE ONLY public.users
@@ -244,7 +245,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: booking_requests booking_requests_space_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: dee
+-- Name: booking_requests booking_requests_space_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nathanquayle
 --
 
 ALTER TABLE ONLY public.booking_requests
@@ -252,7 +253,7 @@ ALTER TABLE ONLY public.booking_requests
 
 
 --
--- Name: bookings bookings_space_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: dee
+-- Name: bookings bookings_space_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nathanquayle
 --
 
 ALTER TABLE ONLY public.bookings
